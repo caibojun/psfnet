@@ -50,12 +50,10 @@ def mobilenet(inputs,
                                                   kernel_size=[3, 3],
                                                   scope=sc+'/depthwise_conv')
 
-        bn = instance_norm(depthwise_conv, name=sc+'/dw_batch_norm')
         pointwise_conv = slim.convolution2d(bn,
                                         num_pwc_filters,
                                         kernel_size=[1, 1],
                                         scope=sc+'/pointwise_conv')
-        bn = instance_norm(pointwise_conv, name=sc+'/pw_batch_norm')
         return bn
   
     def deconv2d(input_, output_dim, ks=4, s=2, stddev=0.02, sc="deconv2d"):

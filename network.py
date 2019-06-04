@@ -58,12 +58,9 @@ def deconv_resnet(image, reuse=False, scope="deconvolution"):
         r7 = residule_block(r6, 256, name='d_r7')
         r8 = residule_block(r7, 256, name='d_r8')
         r9 = residule_block(r8, 256, name='d_r9')
-        r10= residule_block(r9, 256, name='d_r10')
-        r11= residule_block(r10, 256, name='d_r11')
-        r12= residule_block(r11, 256, name='d_r12')
-        r13= residule_block(r12, 256, name='d_r13')
 
-        d1 = deconv2d(r13, 128, 3, 2, name='d_d1_dc')
+
+        d1 = deconv2d(r9, 128, 3, 2, name='d_d1_dc')
         d1 = tf.nn.relu(instance_norm(d1, 'd_d1_bn'))
         d2 = deconv2d(d1, 64, 3, 2, name='d_d2_dc')
         d2 = tf.nn.relu(instance_norm(d2, 'd_d2_bn'))

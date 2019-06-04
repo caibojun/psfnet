@@ -1,2 +1,0 @@
-model_checkpoint_path: "psfnet"
-all_model_checkpoint_paths: "psfnet"
